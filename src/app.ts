@@ -1,14 +1,16 @@
 import express from "express";
-import createHttpError from "http-errors";
 import { globalErrorHandler } from "./middlewares/globalErrorHandler.ts";
 
 const app = express();
+// Middlewares
 
-app.get("/", (req, res, next) => {
-    const error = createHttpError(400, "Test Error");
-    throw error
-});
+//Routes [ import ]
+import userRouter from "./user/userRoute.ts";
+
+// Routes [ use ]
+app.use("/api/users", userRouter);
+
+
 
 app.use(globalErrorHandler);
-
 export default app;
