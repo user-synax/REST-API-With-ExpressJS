@@ -1,0 +1,27 @@
+{
+    "name": "rest-api-with-expressjs",
+    "version": "1.0.0",
+    "description": "This is a Learning Project REST API With Express JS",
+    "keywords": [
+        "expressjs",
+        "restapi",
+        "backend",
+        "databse"
+    ],
+    "homepage": "https://github.com/user-synax/REST-API-With-NextJS#readme",
+    "bugs": {
+        "url": "https://github.com/user-synax/REST-API-With-NextJS/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/user-synax/REST-API-With-NextJS.git"
+    },
+    "license": "MIT",
+    "author": "Ayush",
+    "type": "commonjs",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon index.js"
+    }
+}
