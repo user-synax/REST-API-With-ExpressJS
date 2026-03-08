@@ -6,8 +6,14 @@ const connectDatabase = async () => {
         if (!config.mongoURI) {
             throw new Error("mongoURI is undefined");
         }
+        mongoose.connection.on("connected", () => {
+            console.log("Database Connection Successful...");
+        });
+        mongoose.connection.on("error", (err) => {
+            console.log("Database Connection Failed...");
+            console.log(err);
+        });
         await mongoose.connect(config.mongoURI as string);
-        console.log("Database Connection Successful...");
     } catch (error) {
         console.log("Database Connection Failed...");
         console.log(error);
