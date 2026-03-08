@@ -2,7 +2,7 @@ import app from "./src/app.ts";
 import connectDatabase from "./src/config/db.ts"
 import { config } from "./src/config/config.ts";
 
-connectDatabase()
+await connectDatabase()
 
 const startServer = () => {
     const port = Number(config.port);
