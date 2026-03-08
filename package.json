@@ -19,13 +19,14 @@
     "license": "MIT",
     "author": "Ayush",
     "type": "module",
-    "main": "server.js",
+    "main": "server.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "nodemon server.ts"
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
+        "@types/dotenv": "^6.1.1",
         "@types/express": "^5.0.6",
         "@types/node": "^25.3.5",
         "eslint": "^10.0.3",
@@ -36,6 +37,7 @@
         "typescript-eslint": "^8.56.1"
     },
     "dependencies": {
+        "dotenv": "^17.3.1",
         "express": "^5.2.1"
     }
 }
