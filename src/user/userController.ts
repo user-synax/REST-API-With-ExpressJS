@@ -15,6 +15,13 @@ const registerNewUser = async (
         const error = createHttpError(400, "All fields are required");
         return next(error);
     }
+
+    // Calling Database and checking if user already registered
+    const isUserAlreadyRegistered = await User.findOne({ email });
+    if (isUserAlreadyRegistered) {
+        const error = createHttpError(400, "User already registered");
+        return next(error);
+    }
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({
@@ -44,6 +51,7 @@ const loginUser = async (req: Request, res: Response, next: NextFunction) => {
             const error = createHttpError(401, "Invalid password");
             return next(error);
         }
+        user.password = "";
         res.status(200).json({
             message: "User logged in",
             user: { name: user.name, email: user.email },
