@@ -3,6 +3,8 @@ import createHttpError from "http-errors";
 import User from "./userModle.ts";
 // @ts-ignore
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { config } from "../config/config.ts";
 
 const registerNewUser = async (
     req: Request,
@@ -29,9 +31,17 @@ const registerNewUser = async (
             email,
             password: hashedPassword,
         });
+
+        // JWT Token Generation
+
+        const token = jwt.sign({ sub: user._id }, config.jwt_secret as string, {
+            expiresIn: "7d",
+        });
+
         res.status(201).json({
             message: "New User Registerd",
-            user: { name, email },
+            id: user._id,
+            accessToken: token,
         });
     } catch (error) {
         return next(error);
