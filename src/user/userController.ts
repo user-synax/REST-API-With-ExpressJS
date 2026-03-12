@@ -33,7 +33,6 @@ const registerNewUser = async (
         });
 
         // JWT Token Generation
-
         const token = jwt.sign({ sub: user._id }, config.jwt_secret as string, {
             expiresIn: "7d",
         });
@@ -44,7 +43,7 @@ const registerNewUser = async (
             accessToken: token,
         });
     } catch (error) {
-        return next(error);
+        return next(createHttpError(500, "Error while creating new user"));
     }
 };
 
@@ -67,7 +66,7 @@ const loginUser = async (req: Request, res: Response, next: NextFunction) => {
             user: { name: user.name, email: user.email },
         });
     } catch (error) {
-        return next(error);
+        return next(createHttpError(500, "Error while Getting user"))
     }
 };
 
